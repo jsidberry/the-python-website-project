@@ -10,4 +10,4 @@ set -o pipefail; pip install -r requirements.txt | { grep -v "already satisfied"
 export FLASK_APP=app.py
 export FLASK_ENV=development
 
-# flask run
+flask run
