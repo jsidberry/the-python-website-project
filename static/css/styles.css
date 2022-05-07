@@ -1,12 +1,12 @@
 body, html {
     margin: 0;
     font-family: sans-serif;
-    background-color: lightblue;
+    background-color: whitesmoke;
 }
 
 .content {
     margin: 0 auto;
-    width: 400px;
+    width: 1000px;
 }
 
 table, td, th {

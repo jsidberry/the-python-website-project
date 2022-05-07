@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Task Master</title>
+<title>Home Development</title>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Task Master</h1>
+    <h1 style="text-align: center">Home Tables</h1>
     {% if tasks|length < 1 %}
-    <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+    <h4 style="text-align: center">There are no data to show.</h4>
     {% else %}
-    <!-- <table>
+    <table>
         <tr>
             <th>Task</th>
             <th>Added</th>
@@ -27,7 +27,7 @@
                 </td>
             </tr>
         {% endfor %}
-    </table> -->
+    </table>
     {% endif %}
 
     <div class="form">
