@@ -18,6 +18,18 @@ table {
     width: 100%;
 }
 
+.table_row:nth-child(even) { 
+    background-color: #e5e5e5; 
+}
+
+.table_header {
+    text-align: center;
+}
+
+.table__cell {
+    padding: 8px;
+}
+
 th {
     height: 30px;
 }

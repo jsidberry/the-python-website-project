@@ -6,7 +6,12 @@
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Task Master</h1>
+    <h1 style="text-align: center">Daily Compound Interest Calculator</h1>
+    <div id="principalBox" class="single-field"><label for="amount" class="heading">Principal amount:</label>
+        <span class="currSymbol">$</span>
+        <input type="number" step="any" min="0" name="amount" id="amount" class="calculatorInput" tabindex="0" required="" inputmode="decimal">
+        <span class="clearElement"></span>
+    </div>
     {% if tasks|length < 1 %}
     <h4 style="text-align: center">There are no tasks. Create one below!</h4>
     {% else %}
@@ -30,11 +35,11 @@
     </table> -->
     {% endif %}
 
-    <div class="form">
+    <!-- <div class="form">
         <form action="/" method="POST">
             <input type="text" name="content" id="content">
             <input type="submit" value="Add Task">
         </form>
-    </div>
+    </div> -->
 </div>
 {% endblock %}
