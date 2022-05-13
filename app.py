@@ -89,7 +89,7 @@ def index():
         data.append(tuple([numbered_day] + [date] + dollar_list))
         dollar_list.clear()
 
-    return render_template("calc.html", headings=headings, data=data, dollar_amts=dollar_amts)
+    return render_template("index.html", headings=headings, data=data, dollar_amts=dollar_amts)
 
 
 if __name__ == "__main__":
