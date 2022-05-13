@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+/* * {
+    padding: 0;
+} */
+
 body, html {
     margin: 0;
     font-family: sans-serif;
@@ -6,37 +12,61 @@ body, html {
 
 .content {
     margin: 0 auto;
-    width: 1000px;
+    width: 900px;
 }
 
-table, td, th {
+td, th{
     border: 1px solid #aaa;
+    font-size:14px;
 }
 
 table {
     border-collapse: collapse;
+    font-size:14px;
     width: 100%;
 }
 
-.table_row:nth-child(even) { 
+.table__row:nth-child(even) { 
     background-color: #e5e5e5; 
 }
 
-.table_header {
+.table__header {
     text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    border: 1px solid #aaa;
+    /* background-color: whitesmoke; */
 }
 
 .table__cell {
-    padding: 8px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
 }
 
-th {
+
+.table__header__cell {
+    padding: 0;
     height: 30px;
+    /* position: -webkit-sticky;
+    position: sticky; */
+    /* border: 1px solid #aaa; */
+    /* border-right-color: rgb(170, 170, 170);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-left-color: rgb(170, 170, 170);
+    border-left-style: solid;
+    border-left-width: 1px; */
+    /* background-color: whitesmoke; */
 }
 
 td {
-    text-align: center;
-    padding: 5px;
+    text-align: right;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
 }
 
 .form {
@@ -45,4 +75,19 @@ td {
 
 #content {
     width: 70%;
+}
+
+div.stickycss {
+    border-collapse: collapse;
+    /* width: 100%; */
+    margin: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 11px;
+    padding-left: 10px;
+    /* height: 30px; */
+    border-bottom-color: rgb(170, 170, 170);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    background-color: whitesmoke;
 }
