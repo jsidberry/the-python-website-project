@@ -1,0 +1,6 @@
+.venv
+.gitignore
+README.md
+setup_environment.sh
+test.db
+__pycache__

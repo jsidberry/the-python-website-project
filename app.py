@@ -1,3 +1,4 @@
+from curses import raw
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime, timedelta
@@ -36,6 +37,7 @@ def calc_interest(current_dollar_amt: int, iteration: int):
             interest_rate = 0.032
         amt = new_amt + (new_amt * interest_rate)
         new_amt = amt
+    # print(type(round(amt,2)))
     return str(round(amt,2))
 
 
@@ -48,6 +50,8 @@ def add_two_place_decimal(dollar):
 def add_commas_to_dollar_amounts(money):
     if len(money) < 7:
         results = money
+    # elif len(money) < 7 and money[-3] == '.':
+    #     results = (money + '0')
     elif len(money) == 7 or len(money) == 8 or len(money) == 9:
         results = (money[:-6] + "," + money[-6:])
     elif len(money) == 10 or len(money) == 11 or len(money) == 12:
@@ -58,11 +62,40 @@ def add_commas_to_dollar_amounts(money):
     return results
 
 
+def dollar_list_html(dollar_int, dollar_str, day_num, date_num):
+    html_list = [('table__cell',day_num),('table__cell', date_num)]
+
+    for item in dollar_int:
+        item_tmp = float(item)
+        item_int = (f'%.2f' % item_tmp)
+
+        for item_str in dollar_str:
+            if item_str == add_commas_to_dollar_amounts(str(item_int)):
+                if item_tmp < 1801.00:
+                    html_class = 'table__cell_1pt5'
+                elif item_tmp < 10001.00:
+                    html_class = 'table__cell_1pt9'
+                elif item_tmp < 75001.00:
+                    html_class = 'table__cell_2pt7'
+                elif item_tmp < 1000000.00:
+                    html_class = 'table__cell_3pt2'
+                elif item_tmp < 10000000.00:
+                    html_class = 'table__cell_1m'
+                elif item_tmp is not None:
+                    html_class = 'table__cell_1b'
+                html_list.append((html_class,item_str))
+
+    return html_list
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     init_date = datetime.now()
     data = []
+    datum = []
+    html_list = []
     dollar_calc = dict()
+    dollar_intg = dict()
     day_date = ["Day","Date"]
     dollar_amts = [100,700,1801,10001,75001,100000]
     day_range = 366
@@ -80,16 +113,30 @@ def index():
 
         for dollar_amt in dollar_amts:
             dollar_calc[str(dollar_amt)] = add_commas_to_dollar_amounts(
-                add_two_place_decimal(
-                    calc_interest(int(dollar_amt), day_num)
-                    )
-                )
+                                                add_two_place_decimal(
+                                                    calc_interest(int(dollar_amt), day_num)
+                                                )
+            )
+            dollar_intg[str(dollar_amt)] = calc_interest(int(dollar_amt), day_num)
 
         dollar_list = [dollar_calc[item] for item in dollar_calc]
-        data.append(tuple([numbered_day] + [date] + dollar_list))
-        dollar_list.clear()
+        dollar_html = [dollar_intg[item] for item in dollar_intg]
+        html_td_list = dollar_list_html(dollar_html, dollar_list, numbered_day, date)
 
-    return render_template("index.html", headings=headings, data=data, dollar_amts=dollar_amts)
+        # pp.pprint(html_td_list)
+        # date_tuple = ("table__cell", numbered_day)
+        # numb_tuple = ("table__cell", date)
+        # html_list.insert(0, date_tuple)
+        data.append(tuple([numbered_day] + [date] + dollar_list))
+        datum.append(html_td_list)
+        # datum.append(tuple(("table__cell", numbered_day), ("table__cell", date) + html_td_list))
+        # pp.pprint(html_td_list)   
+        dollar_html.clear()
+        dollar_list.clear()
+    
+    # for x in datum: print(x[0], x[1], x[2])
+
+    return render_template("index.html", headings=headings, data=datum, dollar_amts=dollar_amts)
 
 
 if __name__ == "__main__":

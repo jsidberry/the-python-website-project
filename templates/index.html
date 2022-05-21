@@ -13,9 +13,11 @@
     </tr>
     {% for row in data %}
     <tr class="table__row">
-        {% for cell in row %}
-        <td class="table__cell"><div>{{ cell }}</div></td>
+        {% for class_item, cell_item in row %}
+        <td class="{{ class_item }}"><div>{{ cell_item }}</div></td>
+            
         {% endfor %}
+    
     </tr>
     {% endfor %}
 </table>

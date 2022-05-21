@@ -45,6 +45,49 @@ table {
     border: 1px solid #aaa;
 }
 
+.table__cell_1pt5 {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: #f3e291;
+}
+
+.table__cell_1pt9 {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: #b3f391;
+}
+
+.table__cell_2pt7 {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: #f3d691;
+}
+
+.table__cell_3pt2 {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: #9dc3ee;
+}
+
+.table__cell_1m {
+    padding: 10px;
+    text-align: center;
+    font-style: italic;
+    border: 1px solid #aaa;
+    background-color: #9dc3ee;
+}
+
+.table__cell_1b {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: #ee5454;
+}
+
 
 .table__header__cell {
     padding: 0;
