@@ -13,6 +13,7 @@ body, html {
 .content {
     margin: 0 auto;
     width: 900px;
+    color: #212427;
 }
 
 td, th{
@@ -49,21 +50,21 @@ table {
     padding: 10px;
     text-align: center;
     border: 1px solid #aaa;
-    background-color: #f3e291;
+    background-color: #f9f9b5;
 }
 
 .table__cell_1pt9 {
     padding: 10px;
     text-align: center;
     border: 1px solid #aaa;
-    background-color: #b3f391;
+    background-color: #b1f2b1;
 }
 
 .table__cell_2pt7 {
     padding: 10px;
     text-align: center;
     border: 1px solid #aaa;
-    background-color: #f3d691;
+    background-color: #c3dff4;
 }
 
 .table__cell_3pt2 {
@@ -78,14 +79,14 @@ table {
     text-align: center;
     font-style: italic;
     border: 1px solid #aaa;
-    background-color: #9dc3ee;
+    background-color: #8dbcf1;
 }
 
 .table__cell_1b {
     padding: 10px;
     text-align: center;
     border: 1px solid #aaa;
-    background-color: #ee5454;
+    background-color: #f59797;
 }
 
 

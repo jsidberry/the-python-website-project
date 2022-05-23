@@ -5,20 +5,29 @@
 {% endblock %}
 
 {% block body %}
-<table class="table">
-    <tr class="table__header">
-        {% for header in headings %}
-        <th class="table__header__cell"><div class="stickycss">{{ header }}</div></th>
+<div>
+    <div>
+        <h1>Calculator</h1>
+    </div>
+    <div>
+    <table class="table">
+        <tr class="table__header">
+            {% for header in headings %}
+            <th class="table__header__cell">
+                <div class="stickycss">{{ header }}</div>
+            </th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr class="table__row">
+            {% for class_item, cell_item in row %}
+            <td class="{{ class_item }}"><div>{{ cell_item }}</div></td>
+                
+            {% endfor %}
+        
+        </tr>
         {% endfor %}
-    </tr>
-    {% for row in data %}
-    <tr class="table__row">
-        {% for class_item, cell_item in row %}
-        <td class="{{ class_item }}"><div>{{ cell_item }}</div></td>
-            
-        {% endfor %}
-    
-    </tr>
-    {% endfor %}
-</table>
+    </table>
+    </div>
+</div>
 {% endblock %}

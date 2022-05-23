@@ -4,11 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime, timedelta
 import pprint as pp
 # import SQLAlchemy
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # removes FSADeprecationWarning
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
+app.config['SECRET_KEY'] = '4b39b1b88a8ed15cf284911793c2134f'
+
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -123,21 +126,22 @@ def index():
         dollar_html = [dollar_intg[item] for item in dollar_intg]
         html_td_list = dollar_list_html(dollar_html, dollar_list, numbered_day, date)
 
-        # pp.pprint(html_td_list)
-        # date_tuple = ("table__cell", numbered_day)
-        # numb_tuple = ("table__cell", date)
-        # html_list.insert(0, date_tuple)
         data.append(tuple([numbered_day] + [date] + dollar_list))
-        datum.append(html_td_list)
-        # datum.append(tuple(("table__cell", numbered_day), ("table__cell", date) + html_td_list))
-        # pp.pprint(html_td_list)   
+        datum.append(html_td_list)  
         dollar_html.clear()
         dollar_list.clear()
-    
-    # for x in datum: print(x[0], x[1], x[2])
 
     return render_template("index.html", headings=headings, data=datum, dollar_amts=dollar_amts)
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    return render_template('register.html', title="Register", form=form)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title="Login", form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)
